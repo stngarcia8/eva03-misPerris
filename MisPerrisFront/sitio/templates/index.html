@@ -1,0 +1,103 @@
+{% extends 'maqueta.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% block titleHead %}
+        <title>Fundación Mis Perris: Página de inicio.</title>
+        <link rel="manifest" href="{% static 'manifest.json' %}">
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    {% endblock %}
+    {% block cssHead %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}"> {% endblock %}
+    {% block jsHead %}
+        <script src="{% static 'js/jquery/jquery.js' %}"></script>
+        <script src="{% static 'js/slider/jquery.bxslider.min.js' %}"></script>
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Agregando el carrusel a la pagina -->
+    {% block slider %}
+    <div class="contenedor-carrusel">
+        <div class="contenedor-slider">
+            <div id="miCarrusel">
+                <div id="imagenCarrusel">
+                    <img src="{% static 'img/adoptados/Apolo.jpg' %}" title="Apolo" alt="Apolo">
+                    <p class="testimonio">
+                        Doy gracias por tener en nuestra familia a un ser tan incondicional y especial, que ya lleva mas de 3 añitos alegrando la casa, de verdad Apolo ha sido un cambio radical en mi forma de vida, disfrutar de su compañía me hace muy feliz.
+                        <br>Lucy, duena de Apolo.
+                    </p>
+                </div>
+                <div id="imagenCarrusel">
+                    <img src="{% static 'img/adoptados/Duque.jpg' %}" title="Duke" alt="Duke">
+                    <p class="testimonio">
+                        Por dos añitos Duke es el consentido de la casa y recibe mucho amor de parte de toda la familia! Es alegre y juguetón, nos alegra nuestras vidas.
+                        <br> Laura, dueña de Duke.
+                    </p>
+                </div>
+                <div id="imagenCarrusel">
+                    <img src="{% static 'img/adoptados/Tom.jpg' %}" title="Tom" alt="Tom">
+                    <p class="testimonio">
+                        Tom es un perro sano, muy saludable, fuerte y super juguetón, ama a los niños, le encanta jugar con una pelota y entregar su amor incondicional.
+                        <br> Jennifer, dueña de Tom.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- Contenido de la pagina -->
+    {% block contenido %}
+    <!-- Creando el cuerpo de la pagina -->
+    <section>
+        <!-- Definiendo el contenido de rescate-->
+        <div class="contenedor-rescate">
+            <h1>RESCATE</h1>
+            <h3>ETAPA 1</h3>
+            <hr/>
+            <p>
+                Rescatamos perritos en situación de peligro y/o abandono, los rehabilitamos y los preparamos para buscarles un hogar.<br><br> {% if not request.user.is_authenticated %} Si deseas adoptar uno de los perritos disponibles,
+                <a href="{% url 'registrarPersona' %}">registrese aqui!</a> {% endif %}
+            </p>
+            <img src="{% static 'img/otros/rescate.jpg' %}" alt="Rescate">
+        </div>
+
+        <!-- Definiendo el contenido de crowfounding -->
+        <div class="contenedor-crowdfunding">
+            <img src="{% static 'img/otros/crowfunding.jpg' %}" alt="Crowdfunding">
+            <h1>CROWDFUNDING</h1>
+            <h3>FINANCIAMIENTO</h3>
+            <hr/>
+            <p>
+                sigue nuestras redes sociales para informarte acerca de las diversas campañas y actividades que realizamos para obtener financiamiento para seguir ayudando (centrado)
+            </p>
+            <button class="boton">Campañas</button>
+        </div>
+
+        <!-- Galeria de imagenes de perritos -->
+        <div class="contenedor-galeria-mascotas">
+            <h1>GALERIA DE IMAGENES</h1>
+            <br><hr><br>
+            <form method="post" >
+                {% csrf_token %}
+                <p class="contenedor-filtro">
+                    {{ form }}
+                    <button id="filtrar" type="button">Filtrar</button>
+                </p>
+            </form>
+            <div id="contenedorGaleria" class="contenedor-galeria">
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+    {% block jsBody %}
+        <script src="{% static 'js/slider/slider.js' %}"></script>
+        <script src="{% static 'js/global.js' %}"></script>
+        <script src="{% static 'js/listados/galeria.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>

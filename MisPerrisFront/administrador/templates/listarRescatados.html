@@ -1,0 +1,41 @@
+{% extends 'maqueta.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+
+    <head>
+        {% block titleHead %}
+            <title>Fundación Mis Perris: Administrador - Lista de rescatados.</title>title>
+            <link rel="manifest" href="{% static 'manifest.json' %}">
+            <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+        {% endblock %}
+        {% block cssHead %}
+            <link rel="stylesheet" href="{% static 'css/normal.css' %}">
+        {% endblock %}
+        {% block jsHead %}
+            <script src="{% static 'js/jquery/jquery.js' %}"></script>
+        {% endblock %}
+    </head>
+
+    <body>
+        <!-- Contenido de la pagina -->
+        {% block contenido %}
+            <section>
+
+            <! Contenedor de la lista de mascotas  -->
+                <div id="contenedorForm" class="contenedor-formulario">
+                </div>
+
+                <! Contenedor para mostrar los datos de la mascota -->
+                <div id="contenedorMascota" class="contenedor-ver-informacion">
+                </div>
+            </section>
+        {% endblock %}
+        {% block jsBody %}
+            <script src="{% static 'js/global.js' %}"></script>
+            <script src="{% static 'js/listados/listados.js' %}"></script>
+            <script src="{% static 'js/listados/rescatados.js' %}"></script>
+        {% endblock %}
+    </body>
+
+</html>

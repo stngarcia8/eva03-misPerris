@@ -1,0 +1,42 @@
+{
+    "name": "Mis Perris",
+    "short_name": "Mis Perris",
+    "description": "Aplicacion de la Fundación Mis Perris.",
+    "lang": "es",
+    "icons": [{
+            "src": "huella48.png",
+            "type": "image/png",
+            "sizes": "48x48"
+        },
+        {
+            "src": "huella72.png",
+            "type": "image/png",
+            "sizes": "72x72"
+        },
+        {
+            "src": "huella96.png",
+            "type": "image/png",
+            "sizes": "96x96"
+        },
+        {
+            "src": "huella144.png",
+            "type": "image/png",
+            "sizes": "144x144"
+        },
+        {
+            "src": "huella168.png",
+            "type": "image/png",
+            "sizes": "168x168"
+        },
+        {
+            "src": "huella192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "start_url": "/",
+    "background_color": "#6dccaa",
+    "theme_color": "#6dccaa",
+    "orientation": "portrait",
+    "display": "standalone"
+}

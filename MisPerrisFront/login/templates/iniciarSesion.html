@@ -1,0 +1,65 @@
+{% extends 'maqueta.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% block titleHead  %}
+        <title>Fundación Mis Perris: Inicio de sesión</title>
+        <link rel="manifest" href="{% static 'manifest.json' %}">
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    {% endblock %}
+    {% block cssHead %}
+        <link rel="stylesheet" href="{% static 'css/normal.css' %}"> 
+
+    {% endblock %}
+
+
+</head>
+
+<body>
+
+    <!-- Contenido de la pagina de inicio de sesion -->
+    {% block contenido %}
+    <section>
+        <div id="contenedorFormulario" class="contenedor-formulario">
+            <h1>Iniciar sesión.</h1>
+            <br><hr><br>
+            <p>
+                Ingrese nombre de usuario y contraseña para acceder al perfil.<br>
+                Puede iniciar sesión con su red social favorita pinchando el enlace correspondiente.<br>
+            </p>
+             <form  method="post">
+                {% csrf_token %}
+                {% if form.non.field.errors %}
+                    {{ form.non.field.errors }}
+                {% endif %}
+                {% for field in form.visible_fields %}
+                    <div class="contenedor-campo">
+                        {{ field.label_tag }}
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                 <button class="boton" type="submit">Ingresar</button>
+             </form>
+
+             <!-- Enlace para redes sociales. -->
+             <p>
+                También puede iniciar sesión con su cuenta de:<br><br>
+                <ul>
+                    <li>
+                        <p class="autenticar">
+                            <a href="{% url 'social:begin' 'github' %}">GitHub</a>
+                        </p>
+                    </li>
+                </ul>
+             </p>
+        </div>
+    </section>
+    {% endblock %}
+    {% block jsBody %}
+        <script src="{% static 'js/sinConexion.js' %}"></script>
+    {% endblock %}
+</body>
+
+</html>

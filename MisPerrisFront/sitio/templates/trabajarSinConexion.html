@@ -1,0 +1,39 @@
+{% extends 'maqueta.html' %} {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    {% block titleHead %}
+        <title>Fundación Mis Perris: Sin conexión.</title>
+        <link rel="manifest" href="{% static 'manifest.json' %}">
+        <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    {% endblock %}
+    {% block cssHead %}
+        <link rel="stylesheet" href="{% static 'css/normal.css' %}">
+    {% endblock %}
+</head>
+
+<body>
+    <!-- Contenido de la pagina -->
+    {% block contenido %}
+        <!-- Creando el cuerpo de la pagina -->
+        <section>
+            <div id="contenedorForm" class="contenedor-formulario">
+                <h1>Trabajando sin conexión.</h1>
+                <hr><br>
+                <p>
+                    Actualmente esta sin conexión a internet, por lo tanto las funcionalidades del sitio se encuentran reducidas.<br>
+                    Esto puede ocurrir cuando:
+                    <ol>
+                        <li>En el navegador utilizado esta activa la opción "Trabajar sin conexión".</li>
+                        <li>No esta conectado a Internet.</li>
+                    </ol>>
+                    <br><br>
+                    <a href="{% url 'irInicio' %}">Volver a inicio</a>
+                </p>
+            </div>
+        </section>
+    {% endblock %}
+</body>
+
+</html>
